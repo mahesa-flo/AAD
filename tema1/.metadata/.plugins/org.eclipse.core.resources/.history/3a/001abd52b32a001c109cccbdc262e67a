@@ -1,0 +1,12 @@
+package ejerciciosT1S2;
+
+public class ej15 {
+
+	public static void main(String[] args) {
+		// Realiza un programa que permita recibir por teclado una serie de strings por parte del
+		//usuario y los vaya escribiendo en un fichero de texto. Como condición de finalización, el
+		//usuario deberá escribir un string que sea “exit”.
+
+	}
+
+}

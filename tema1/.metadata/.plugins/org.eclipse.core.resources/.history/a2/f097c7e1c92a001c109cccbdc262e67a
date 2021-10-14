@@ -1,0 +1,10 @@
+package AE_02_T1_2;
+
+public class Modelo {
+	
+	public String leerArchivo() {
+		
+		return "esto es el texto del archivo";
+	}
+
+}

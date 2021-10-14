@@ -1,0 +1,39 @@
+package AE_02_T1_2;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Controlador {
+
+	Vista vista;
+	Modelo modelo;
+
+	public Controlador(Vista vista, Modelo modelo) {
+		this.vista = vista;
+		this.modelo = modelo;
+		initEventHandlers(); // llamo a los eventos
+	}
+
+	
+	
+	//agrupo todos los métodos q van a suceder en vista.java
+	public void initEventHandlers() {
+		
+		//
+		this.vista.getBtnBuscar().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent event) {
+				// TODO Auto-generated method stub
+				System.out.println("Se ha hecho click en el botón buscar");
+				vista.getTextAreaOriginal().append("Se ha hecho click en el botón buscar");
+				
+			}
+
+		});
+		
+		
+		
+
+	}
+
+}

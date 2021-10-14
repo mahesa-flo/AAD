@@ -1,0 +1,11 @@
+package ejerciciosT1S2;
+
+public class ej11 {
+
+	public static void main(String[] args) {
+		// Realiza otro programa que muestre un número determinado de caracteres por pantalla (por ejemplo 100),
+		//espere a que el usuario presione alguna tecla, muestre otro bloque de caracteres, vuelva a esperar, 
+		//y así sucesivamente hasta mostrar todo el contenido.
+	}
+
+}

@@ -1,0 +1,14 @@
+package AE_02_T1_2;
+
+public class Controlador {
+
+	Vista vista;
+	Modelo modelo;
+	
+	public Controlador(Vista vista, Modelo modelo) {
+		this.vista=vista;
+		this.modelo=modelo;
+	}
+	
+	
+}

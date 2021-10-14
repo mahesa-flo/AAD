@@ -1,0 +1,11 @@
+package ejerciciosT1S2;
+
+public class ej9 {
+	//Escribe un programa que reciba como parámetro de entrada la ruta de un fichero, lea su contenido y lo muestre por pantalla carácter a carácter.
+	public static void main(String[] args) {
+		
+		
+	}
+	
+
+}

@@ -1,0 +1,10 @@
+package ejerciciosT1S2;
+
+public class ej10 {
+
+	public static void main(String[] args) {
+		// Introduce una modificación en el programa anterior para que admita otro parámetro de entrada adicional que permita especificar la velocidad a la que se muestren los caracteres.
+
+	}
+
+}

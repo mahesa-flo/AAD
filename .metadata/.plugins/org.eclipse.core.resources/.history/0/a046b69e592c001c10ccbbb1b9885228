@@ -1,0 +1,113 @@
+package AE_02_T1_2;
+
+import java.awt.Color;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.ArrayList;
+
+public class Modelo {
+
+	private String fichero_lectura;
+	private String fichero_escritura;
+
+	/**
+	 * constructor
+	 */
+	public Modelo() {
+		fichero_lectura = "AE02_T1_2_Streams_Groucho.txt";
+		fichero_escritura = "AE02_T1_2_Fichero_Escritura.txt";
+	}
+
+	/**
+	 * lectura del fichero linea linea y lo guardo en una lista
+	 * 
+	 * @param fichero
+	 * @return cada elemento de la lista es una linea
+	 */
+	public ArrayList<String> contenidoFichero(String fichero) {
+
+		ArrayList<String> contenidoFichero = new ArrayList<String>();
+		File f = new File(fichero);
+		FileReader fr;
+		try {
+			fr = new FileReader(f);
+			BufferedReader br = new BufferedReader(fr);
+			String linea = br.readLine();
+			while (linea != null) {
+				contenidoFichero.add(linea);
+				linea = br.readLine();
+			}
+			br.close();
+			fr.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return contenidoFichero;
+	}
+
+	/**
+	 * obtener el nombre del fichero que se lee
+	 * 
+	 * @return
+	 */
+	public String ficheroLectura() {
+		return fichero_lectura;
+	}
+
+	/**
+	 * para obtener el nombre del fichero donde se escribe
+	 * 
+	 * @return
+	 */
+	public String ficheroEscritura() {
+		return fichero_escritura;
+	}
+
+	/**
+	 * recorre el contenido del texto y encuentra las coincidencias
+	 * 
+	 * @param textoBuscar
+	 * @return un entero con el número de coincidencias
+	 */
+	public int buscarTexto(String textoBuscar) {
+		int contador = 0;
+		ArrayList<String> contenidoFicheroAL = contenidoFichero(fichero_lectura);
+
+		for (String linea : contenidoFicheroAL) {
+			int posicion = 0;
+			do {
+				posicion = linea.indexOf(textoBuscar, posicion); //buscar desde la posicion en la q encuentra la coincidencia
+				if (posicion > -1) {
+					contador++; //aumento contador
+					posicion++; //sumo una posicion
+				}
+			} while (posicion > -1);
+		}
+
+		return contador;
+	}
+
+	
+	
+		
+	/**
+	 * lee el ficheroLectura, reemplaza las coincidencias que haya de textoBuscar
+	 * con textoReemplazar
+	 * 
+	 * @param textoBuscar
+	 * @param textoReemplazar
+	 */
+	public void reemplazarTexto(String textoBuscar, String textoReemplazar) {
+		// replaceAll de la clase String
+		ArrayList<String> contenidoFicheroAL = contenidoFichero(fichero_lectura);
+		for (String linea : contenidoFicheroAL) {
+			linea.replaceAll(textoBuscar, textoReemplazar);
+		}
+	
+	}
+
+}

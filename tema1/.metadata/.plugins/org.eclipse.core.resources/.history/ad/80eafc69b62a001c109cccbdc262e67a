@@ -1,0 +1,19 @@
+package ejerciciosT1S2;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class seccion2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		InputStreamReader isr=new InputStreamReader(System.in); 
+		BufferedReader br= new BufferedReader (isr);  
+		System.out.print("Número de ejercicio: ");
+		
+		
+		
+	}
+
+}

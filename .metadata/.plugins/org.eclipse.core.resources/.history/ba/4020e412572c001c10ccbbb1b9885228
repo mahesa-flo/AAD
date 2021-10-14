@@ -1,0 +1,86 @@
+package AE_02_T1_2;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
+public class Controlador {
+
+	private Vista vista;
+	private Modelo modelo;
+	private ActionListener actionListenerBuscar, actionListenerReemplazar;
+	private String ficheroLectura, ficheroEscritura;
+	private String textoBuscar, textoReemplazar;
+
+	/**
+	 * constructor
+	 * 
+	 * @param vista
+	 * @param modelo
+	 */
+	public Controlador(Vista vista, Modelo modelo) {
+		this.vista = vista;
+		this.modelo = modelo;
+		control(); // llamo a los eventos
+	}
+
+	// agrupo todos los métodos q van a suceder en vista.java
+	public void control() {
+
+		// 1. asignar los strings de ficheroEscritura y ficheroLectura que se definen en
+		// el Modelo
+		ficheroLectura = this.modelo.ficheroLectura();
+		ficheroEscritura = this.modelo.ficheroEscritura();
+
+		// 2. mostrar en el textArea_Original el ficheroLectura --> método mostrarFichero()
+		mostrarFichero(ficheroLectura, 1);
+		System.out.println("Inicio del programa...");
+
+		// 3. ActionListenerBuscar
+		// a. Obtener de la vista el string con el texto a buscar:
+		// b. Llamar al método buscarTexto del modelo pasandole el String:
+		// c. Mostrar JOptionPane el num de coincidencias
+
+		this.vista.getBtnBuscar().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent event) {
+				// TODO Auto-generated method stub
+				String textoBuscado = vista.getTextFieldBuscar().getText();
+				System.out.println("Se ha hecho click en el botón buscar");
+				System.out.println("Texto buscado: "+textoBuscado);												
+				int numeroCoincidencias=modelo.buscarTexto(textoBuscado);
+				JOptionPane.showMessageDialog(null, "Se han encontrado " + numeroCoincidencias + " coincidencias.");
+			}
+		});
+
+	}
+
+	
+	
+	
+	
+	
+	/**
+	 * método para mostrar contenido de fichero en textArea
+	 * 
+	 * @param fichero        --> puede q sea el de lectura o el de escritura
+	 * @param numeroTextArea --> TextAreaOriginal es el superior==1,
+	 *                       TextAreaModificado el inferior
+	 */
+	public void mostrarFichero(String fichero, int numeroTextArea) {
+		// devuelve una lista de strings -->lineas
+		ArrayList<String> contenidoFichero = this.modelo.contenidoFichero(fichero);
+
+		for (String linea : contenidoFichero) {
+			if (numeroTextArea == 1)
+				this.vista.getTextAreaOriginal().append(linea + "\n");
+			else
+				this.vista.getTextAreaModificado().append(linea + "\n");
+		}
+
+	}
+
+}

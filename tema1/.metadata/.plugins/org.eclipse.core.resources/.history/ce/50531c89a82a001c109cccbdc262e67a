@@ -1,0 +1,29 @@
+package ejerciciosT1S2;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class ej9 {
+	// Escribe un programa que reciba como parámetro de entrada la ruta de un
+	// fichero, lea su contenido y lo muestre por pantalla carácter a carácter.
+	public static void main(String[] args) {
+
+		FileReader fr;
+		try {
+			fr = new FileReader("AE02_T1_2_Streams_Groucho.txt");
+			int valor = fr.read(); // leo el primer caracter
+			while (valor != -1) { // si valor!=-1 es porque SI es un caracter válido
+				System.out.print((char) valor); // para mostrar el caracter y no un entero,
+												// hago un cast a char. el valor del caracter a partir del entero en el
+												// valor de la tabla ASCII
+				valor = fr.read();
+			}
+			fr.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+}

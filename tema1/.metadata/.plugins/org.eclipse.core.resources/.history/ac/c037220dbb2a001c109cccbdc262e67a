@@ -1,0 +1,36 @@
+package ejerciciosT1S2;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import ejerciciosT1S2.ej9;
+import ejerciciosT1S2.ej10;
+
+public class seccion2 {
+
+	public static void main(String[] args) throws IOException, InterruptedException {
+		// TODO Auto-generated method stub
+		String nombreFichero = args[0];
+		int velocidad= Integer.parseInt(args[1]);
+		
+		InputStreamReader isr=new InputStreamReader(System.in); 
+		BufferedReader br= new BufferedReader (isr);  
+		System.out.print("Número de ejercicio: ");
+		String numString=br.readLine();
+		int numero=Integer.parseInt(numString);
+		
+		switch (numero) {
+		case 9:
+			ej9.ejercicio9(nombreFichero);
+			break;
+		case 10:
+			ej10.ejercicio10(nombreFichero, velocidad);
+			break;
+//		case 11:
+//			ej11(args);
+//			break;	
+		}
+		
+	}
+
+}
