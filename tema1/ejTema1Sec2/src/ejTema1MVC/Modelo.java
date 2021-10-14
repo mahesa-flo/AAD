@@ -1,0 +1,86 @@
+package ejTema1MVC;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.util.ArrayList;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+public class Modelo {
+
+	private String fichero_lectura;
+	private String fichero_escritura;
+	
+	public Modelo() {
+		fichero_lectura="AE02_T1_2_Streams_Groucho.txt"; // leemos
+		fichero_escritura="AE02_T1_2_Streams_Groucho_copia.txt"; // 
+	}
+	
+	//-> se llama desde el Controlador
+	public ArrayList<String> contenidoFichero(String fichero){
+		ArrayList<String> contenidoFichero= new ArrayList<String>();
+		File f=new File(fichero);
+		
+		FileReader fr;
+		try {
+			fr = new FileReader(f);
+			BufferedReader br=new BufferedReader(fr);
+			String linea=br.readLine(); // primera linea
+			while(linea !=null) { // hay contenido?
+				contenidoFichero.add(linea); // sí, lo añado al contenido
+				linea=br.readLine(); // paso a la siguiente línea (while)
+			}				
+			br.close();
+			fr.close();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+			
+		}
+		return contenidoFichero;
+	}
+	
+	
+	//como un getter
+	public String ficheroEscritura() {
+		return fichero_escritura;
+	}
+	
+	//como un getter
+	public String ficheroLectura() {
+		return fichero_lectura;
+	}
+	
+	//capturado por el controlador
+	public void anyadirTexto(String textoAnyadir) {
+		File f1=new File(ficheroLectura());
+		File f2=new File(ficheroEscritura());
+		
+		FileReader fr;
+		try {
+			fr = new FileReader(f1);
+			BufferedReader br= new BufferedReader(fr);
+			FileWriter fw= new FileWriter(f2);
+			BufferedWriter bw= new BufferedWriter(fw);
+			String linea=br.readLine();
+			while(linea !=null) {
+				bw.write(linea);;
+				bw.newLine();
+				linea= br.readLine();
+			}
+			bw.write(textoAnyadir);
+			br.close();
+			fr.close();
+			bw.close();
+			fw.close();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+		}
+
+	}
+	
+}
